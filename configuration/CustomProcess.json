@@ -1,0 +1,480 @@
+{
+  "ItemTypes": [
+    "Initiative",
+    "Epic",
+    "Container",
+    "Feature",
+    "List",
+    "UserStory",
+    "TechTask",
+    "Spike",
+    "Bug",
+    "Task",
+    "Defect"
+  ],
+  "Prefix": "[sync]",
+  "Rules": [
+    {
+      "RuleName": "Sprint iterations blocked",
+      "TemplateName": "RestrictInnerIterationLevels.eps",
+      "Props": {
+        "RootIterationLevel": "2",
+        "SprintIterationLevel": "4"
+      },
+      "ItemTypes": {
+        "Initiative": {},
+        "Epic": {},
+        "Container": {},
+        "Feature": {},
+        "List": {}
+      }
+    },
+    {
+      "RuleName": "Create and Close only by leadership group",
+      "TemplateName": "StatesLimitedToGroup.eps",
+      "Props": {
+        "GroupId": "4a922cc5-3c50-41d8-b52a-b32cce76de8a",
+        "States": [
+          "New",
+          "Closed"
+        ]
+      },
+      "ItemTypes": {
+        "Initiative": {},
+        "Epic": {},
+        "Container": {},
+        "Feature": {},
+        "List": {}
+      }
+    },
+    {
+      "RuleName": "Bug info required on creation",
+      "TemplateName": "FieldsRequiredWhenWas.eps",
+      "Props": {
+        "State": ""
+      },
+      "ItemTypes": {
+        "Bug": { "Fields": [ "ReproSteps" ] },
+        "Defect": { "Fields": [ "Description" ] }
+      }
+    },
+    {
+      "RuleName": "Parent required after New",
+      "TemplateName": "FieldsRequiredWhenNotInState.eps",
+      "Props": {
+        "Disabled": "false",
+        "State": "New",
+        "Fields": [ "Parent" ]
+      },
+      "ItemTypes": {
+        "Epic": {},
+        "Container": {},
+        "Feature": {},
+        "List": {},
+        "UserStory": {},
+        "TechTask": {},
+        "Spike": {},
+        "Bug": {},
+        "Task": {},
+        "Defect": {}
+      }
+    },
+    {
+      "RuleName": "Activity required after New",
+      "TemplateName": "FieldsRequiredWhenNotInState.eps",
+      "Props": {
+        "State": "New",
+        "Fields": [ "Activity" ]
+      },
+      "ItemTypes": {
+        "Task": {}
+      }
+    },
+    {
+      "RuleName": "Priority managed only by leadership group",
+      "TemplateName": "FieldEditLimitedToGroup.eps",
+      "Props": {
+        "GroupId": "4a922cc5-3c50-41d8-b52a-b32cce76de8a",
+        "Field": "Priority"
+      },
+      "ItemTypes": {
+        "Epic": {},
+        "Feature": {},
+        "UserStory": {},
+        "TechTask": {},
+        "Spike": {}
+      }
+    },
+    {
+      "RuleName": "Ticket cannot be started from New state",
+      "TemplateName": "DisallowStateMoveFromTo.eps",
+      "Props": {
+        "StateFrom": "New",
+        "StatesTo": [
+          "In Progress",
+          "In Testing",
+          "Ready for testing",
+          "UAT"
+        ]
+      },
+      "ItemTypes": {
+        "UserStory": {},
+        "TechTask": {},
+        "Spike": {},
+        "Bug": {}
+      }
+    },
+    {
+      "RuleName": "Required fields for (2) Pre-Grooming",
+      "TemplateName": "FieldsRequiredForState.eps",
+      "Props": {
+        "State": "Pre-grooming"
+      },
+      "ItemTypes": {
+        "UserStory": {
+          "Fields": [
+            "Priority",
+            "Description",
+            "Version"
+          ]
+        },
+        "TechTask": {
+          "Fields": [
+            "Priority",
+            "Description",
+            "Version"
+          ]
+        },
+        "Spike": {
+          "Fields": [
+            "Priority",
+            "Description"
+          ]
+        },
+        "Bug": {
+          "Fields": [
+            "Priority",
+            "Version"
+          ]
+        }
+      }
+    },
+    {
+      "RuleName": "Required fields for (3) Grooming",
+      "TemplateName": "FieldsRequiredForState.eps",
+      "Props": {
+        "State": "Grooming"
+      },
+      "ItemTypes": {
+        "UserStory": {
+          "Fields": [
+            "Priority",
+            "Description",
+            "Version",
+            "AcceptanceCriteria"
+          ]
+        },
+        "TechTask": {
+          "Fields": [
+            "Priority",
+            "Description",
+            "Version",
+            "AcceptanceCriteria"
+          ]
+        },
+        "Spike": {
+          "Fields": [
+            "Priority",
+            "Description",
+            "AcceptanceCriteria"
+          ]
+        },
+        "Bug": {
+          "Fields": [
+            "Priority",
+            "Version"
+          ]
+        }
+      }
+    },
+    {
+      "RuleName": "Required fields for (4) Planning",
+      "TemplateName": "FieldsRequiredForState.eps",
+      "Props": {
+        "State": "Planning"
+      },
+      "ItemTypes": {
+        "UserStory": {
+          "Fields": [
+            "Priority",
+            "Description",
+            "Version",
+            "AcceptanceCriteria",
+            "StoryPoints"
+          ]
+        },
+        "TechTask": {
+          "Fields": [
+            "Priority",
+            "Description",
+            "Version",
+            "AcceptanceCriteria",
+            "StoryPoints"
+          ]
+        },
+        "Spike": {
+          "Fields": [
+            "Priority",
+            "Description",
+            "AcceptanceCriteria",
+            "StoryPoints"
+          ]
+        },
+        "Bug": {
+          "Fields": [
+            "Priority",
+            "Version",
+            "StoryPoints"
+          ]
+        }
+      }
+    },
+    {
+      "RuleName": "Required fields for (5) To Do",
+      "TemplateName": "FieldsRequiredForState.eps",
+      "Props": {
+        "State": "To Do"
+      },
+      "ItemTypes": {
+        "UserStory": {
+          "Fields": [
+            "Priority",
+            "Description",
+            "Version",
+            "AcceptanceCriteria",
+            "StoryPoints"
+          ]
+        },
+        "TechTask": {
+          "Fields": [
+            "Priority",
+            "Description",
+            "Version",
+            "AcceptanceCriteria",
+            "StoryPoints"
+          ]
+        },
+        "Spike": {
+          "Fields": [
+            "Priority",
+            "Description",
+            "AcceptanceCriteria",
+            "StoryPoints"
+          ]
+        },
+        "Bug": {
+          "Fields": [
+            "Priority",
+            "Version",
+            "StoryPoints"
+          ]
+        }
+      }
+    },
+    {
+      "RuleName": "Required fields for (6) In Progress",
+      "TemplateName": "FieldsRequiredForState.eps",
+      "Props": {
+        "State": "In Progress"
+      },
+      "ItemTypes": {
+        "UserStory": {
+          "Fields": [
+            "Priority",
+            "Description",
+            "Version",
+            "AcceptanceCriteria"
+          ]
+        },
+        "TechTask": {
+          "Fields": [
+            "Priority",
+            "Description",
+            "Version",
+            "AcceptanceCriteria"
+          ]
+        },
+        "Spike": {
+          "Fields": [
+            "Priority",
+            "Description",
+            "AcceptanceCriteria"
+          ]
+        },
+        "Bug": {
+          "Fields": [
+            "Priority",
+            "Version"
+          ]
+        }
+      }
+    },
+    {
+      "RuleName": "Required fields for (7) Ready for testing",
+      "TemplateName": "FieldsRequiredForState.eps",
+      "Props": {
+        "State": "Ready for testing"
+      },
+      "ItemTypes": {
+        "UserStory": {
+          "Fields": [
+            "Priority",
+            "Description",
+            "Version",
+            "AcceptanceCriteria"
+          ]
+        },
+        "TechTask": {
+          "Fields": [
+            "Priority",
+            "Description",
+            "Version",
+            "AcceptanceCriteria"
+          ]
+        },
+        "Spike": {
+          "Fields": [
+            "Priority",
+            "Description",
+            "AcceptanceCriteria"
+          ]
+        },
+        "Bug": {
+          "Fields": [
+            "Priority",
+            "Version"
+          ]
+        }
+      }
+    },
+    {
+      "RuleName": "Required fields for (8) In Testing",
+      "TemplateName": "FieldsRequiredForState.eps",
+      "Props": {
+        "State": "In Testing"
+      },
+      "ItemTypes": {
+        "UserStory": {
+          "Fields": [
+            "Priority",
+            "Description",
+            "Version",
+            "AcceptanceCriteria"
+          ]
+        },
+        "TechTask": {
+          "Fields": [
+            "Priority",
+            "Description",
+            "Version",
+            "AcceptanceCriteria"
+          ]
+        },
+        "Spike": {
+          "Fields": [
+            "Priority",
+            "Description",
+            "AcceptanceCriteria"
+          ]
+        },
+        "Bug": {
+          "Fields": [
+            "Priority",
+            "Version"
+          ]
+        }
+      }
+    },
+    {
+      "RuleName": "Required fields for (2) In Progress",
+      "TemplateName": "FieldsRequiredForState.eps",
+      "Props": {
+        "State": "In Progress",
+        "Fields": [
+          "OriginalEstimate",
+          "RemainingWork"
+        ]
+      },
+      "ItemTypes": {
+        "Task": {},
+        "Defect": {}
+      }
+    },
+    {
+      "RuleName": "Required fields for (3) Review",
+      "TemplateName": "FieldsRequiredForState.eps",
+      "Props": {
+        "State": "Review",
+        "Fields": [
+          "OriginalEstimate",
+          "CompletedWork"
+        ]
+      },
+      "ItemTypes": {
+        "Task": {},
+        "Defect": {}
+      }
+    },
+    {
+      "RuleName": "Iteration Level 4 managed only by leadership group",
+      "TemplateName": "FieldEditLimitedToGroup.eps",
+      "Props": {
+        "Disabled": "false",
+        "GroupId": "4a922cc5-3c50-41d8-b52a-b32cce76de8a",
+        "Field": "IterationLevel4"
+      },
+      "ItemTypes": {
+        "Epic": {},
+        "Container": {},
+        "Feature": {},
+        "List": {},
+        "UserStory": {},
+        "TechTask": {},
+        "Spike": {}
+      }
+    },
+    {
+      "RuleName": "Iteration Level 3 managed only by leadership group",
+      "TemplateName": "FieldEditLimitedToGroup.eps",
+      "Props": {
+        "Disabled": "false",
+        "GroupId": "4a922cc5-3c50-41d8-b52a-b32cce76de8a",
+        "Field": "IterationLevel3"
+      },
+      "ItemTypes": {
+        "Epic": {},
+        "Container": {},
+        "Feature": {},
+        "List": {},
+        "UserStory": {},
+        "TechTask": {},
+        "Spike": {}
+      }
+    },
+    {
+      "RuleName": "Close only by leadership group",
+      "TemplateName": "StatesLimitedToGroup.eps",
+      "Props": {
+        "GroupId": "4a922cc5-3c50-41d8-b52a-b32cce76de8a",
+        "States": [
+          "Closed"
+        ]
+      },
+      "ItemTypes": {
+        "UserStory": {},
+        "TechTask": {},
+        "Spike": {}
+      }
+    }
+  ]
+}
