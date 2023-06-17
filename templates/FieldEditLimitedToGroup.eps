@@ -1,0 +1,19 @@
+{
+    "customizationType": "custom",
+    "name": "<%= $RuleName %>",
+    "conditions": [
+        {
+            "conditionType": "whenCurrentUserIsNotMemberOfGroup",
+            "field": null,
+            "value": "<%= $GroupId %>"
+        }
+    ],
+    "actions": [
+        {
+            "actionType": "makeReadOnly",
+            "targetField": "<%= Get-AzureDevOpsFieldName $Field %>",
+            "value": null
+        }
+    ],
+    "isDisabled": <%= Get-OrElse $Disabled "false" %> 
+}

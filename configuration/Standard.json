@@ -1,0 +1,172 @@
+{
+  "ItemTypes": [
+    "Initiative",
+    "Epic",
+    "Feature",
+    "UserStory",
+    "Bug",
+    "Task",
+    "Defect"
+  ],
+  "Prefix": "[sync]",
+  "Rules": [
+    {
+      "RuleName": "Create and Close only by leadership group",
+      "TemplateName": "StatesLimitedToGroup.eps",
+      "Props": {
+        "GroupId": "00000000-0000-0000-0000-000000000000",
+        "States": [
+          "New",
+          "Closed"
+        ]
+      },
+      "ItemTypes": {
+        "Initiative": {},
+        "Epic": {},
+        "Feature": {}
+      }
+    },
+    {
+      "RuleName": "Parent required after New",
+      "TemplateName": "FieldsRequiredWhenNotInState.eps",
+      "Props": {
+        "Disabled": "false",
+        "State": "New",
+        "Fields": [ "Parent" ]
+      },
+      "ItemTypes": {
+        "Epic": {},
+        "Feature": {},
+        "UserStory": {},
+        "Bug": {},
+        "Task": {},
+        "Defect": {}
+      }
+    },
+    {
+      "RuleName": "Activity required after New",
+      "TemplateName": "FieldsRequiredWhenNotInState.eps",
+      "Props": {
+        "State": "New",
+        "Fields": [ "Activity" ]
+      },
+      "ItemTypes": {
+        "Task": {}
+      }
+    },
+    {
+      "RuleName": "Priority managed only by leadership group",
+      "TemplateName": "FieldEditLimitedToGroup.eps",
+      "Props": {
+        "GroupId": "00000000-0000-0000-0000-000000000000",
+        "Field": "Priority"
+      },
+      "ItemTypes": {
+        "Epic": {},
+        "Feature": {},
+        "UserStory": {},
+        "Task": {}
+      }
+    },
+    {
+      "RuleName": "Required fields for (2) Pre-Grooming",
+      "TemplateName": "FieldsRequiredForState.eps",
+      "Props": {
+        "State": "Pre-grooming"
+      },
+      "ItemTypes": {
+        "UserStory": {
+          "Fields": [
+            "Priority",
+            "Description"
+          ]
+        },
+        "Bug": {
+          "Fields": [
+            "Priority"
+          ]
+        }
+      }
+    },
+    {
+      "RuleName": "Required fields for (3) Grooming",
+      "TemplateName": "FieldsRequiredForState.eps",
+      "Props": {
+        "State": "Grooming"
+      },
+      "ItemTypes": {
+        "UserStory": {
+          "Fields": [
+            "Priority",
+            "Description",
+            "AcceptanceCriteria"
+          ]
+        },
+        "Bug": {
+          "Fields": [
+            "Priority"
+          ]
+        }
+      }
+    },
+    {
+      "RuleName": "Required fields for (4) Planning",
+      "TemplateName": "FieldsRequiredForState.eps",
+      "Props": {
+        "State": "Planning"
+      },
+      "ItemTypes": {
+        "UserStory": {
+          "Fields": [
+            "Priority",
+            "Description",
+            "AcceptanceCriteria",
+            "StoryPoints"
+          ]
+        },
+        "Bug": {
+          "Fields": [
+            "Priority",
+            "StoryPoints"
+          ]
+        }
+      }
+    },
+    {
+      "RuleName": "Required fields for (5) To Do",
+      "TemplateName": "FieldsRequiredForState.eps",
+      "Props": {
+        "State": "To Do"
+      },
+      "ItemTypes": {
+        "UserStory": {
+          "Fields": [
+            "Priority",
+            "Description",
+            "AcceptanceCriteria",
+            "StoryPoints"
+          ]
+        },
+        "Bug": {
+          "Fields": [
+            "Priority",
+            "StoryPoints"
+          ]
+        }
+      }
+    },
+    {
+      "RuleName": "Close only by leadership group",
+      "TemplateName": "StatesLimitedToGroup.eps",
+      "Props": {
+        "GroupId": "00000000-0000-0000-0000-000000000000",
+        "States": [
+          "Closed"
+        ]
+      },
+      "ItemTypes": {
+        "UserStory": {}
+      }
+    }
+  ]
+}

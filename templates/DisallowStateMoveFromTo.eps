@@ -1,0 +1,20 @@
+{
+    "customizationType": "custom",
+    "name": "<%= $RuleName %>",
+    "conditions": [
+        {
+            "conditionType": "whenWas",
+            "field": "System.State",
+            "value": "<%= $StateFrom %>"
+        }
+    ],
+    "actions": [
+<% $StatesTo | Each { -%>
+        {
+            "actionType": "disallowValue",
+            "targetField": "System.State",
+            "value": "<%= $_ %>"
+        }<% } -Join ",`n" %>
+    ],
+    "isDisabled": <%= Get-OrElse $Disabled "false" %> 
+}

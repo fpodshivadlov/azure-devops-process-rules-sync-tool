@@ -1,0 +1,25 @@
+{
+    "customizationType": "custom",
+    "name": "<%= $RuleName %>",
+    "conditions": [
+        {
+            "conditionType": "whenWas",
+            "field": "System.State",
+            "value": "<%= $StateFrom %>"
+        },
+        {
+            "conditionType": "when",
+            "field": "System.State",
+            "value": "<%= $StateTo %>"
+        }
+    ],
+    "actions": [
+<% $Fields | Each { -%>
+        {
+            "actionType": "makeRequired",
+            "targetField": "<%= Get-AzureDevOpsFieldName $_ %>",
+            "value": null
+        }<% } -Join ",`n" %>
+    ],
+    "isDisabled": <%= Get-OrElse $Disabled "false" %> 
+}

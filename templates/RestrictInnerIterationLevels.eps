@@ -1,0 +1,20 @@
+{
+    "customizationType": "custom",
+    "name": "<%= $RuleName %>",
+    "conditions": [
+        {
+            "conditionType": "whenNot",
+            "field": "System.IterationLevel<%= [int]$RootIterationLevel+1 %>",
+            "value": ""
+        }
+    ],
+    "actions": [
+<% ([int]$RootIterationLevel+1) .. ([int]$SprintIterationLevel) | Each { -%>
+        {
+            "actionType": "makeReadOnly",
+            "targetField": "System.IterationLevel<%= $_ %>",
+            "value": null
+        }<% } -Join ",`n" %>
+    ],
+    "isDisabled": <%= Get-OrElse $Disabled "false" %> 
+}
