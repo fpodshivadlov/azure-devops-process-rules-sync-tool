@@ -1,0 +1,25 @@
+{
+    "count": 1,
+    "value": [
+        {
+            "id": "00000000-0000-0000-0000-000000000001",
+            "customizationType": "custom",
+            "name": "[sync] Simple rule",
+            "conditions": [
+                {
+                    "conditionType": "whenCurrentUserIsNotMemberOfGroup",
+                    "field": null,
+                    "value": "00000000-0000-0000-0000-000000000000"
+                }
+            ],
+            "actions": [
+                {
+                    "actionType": "disallowValue",
+                    "targetField": "System.State",
+                    "value": "Closed"
+                }
+            ],
+            "isDisabled": false
+        }          
+    ]
+}

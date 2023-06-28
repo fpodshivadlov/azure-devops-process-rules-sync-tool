@@ -1,0 +1,13 @@
+{
+    "count": 1,
+    "value": [
+        {
+            "id": "00000000-0000-0000-ffff-000000000000",
+            "customizationType": "custom",
+            "name": "[anotherprefix] Another prefix rule",
+            "conditions": [],
+            "actions": [],
+            "isDisabled": false
+        }
+    ]
+}

@@ -35,27 +35,29 @@ function Format-PatTokenBasicHeader {
 
 function Import-HelpersFromPowerShell {
     param (
-        [string] $PsFilePath
+        [string] $PsFolderPath
     )
 
-    Import-Module -Name $PsFilePath -Force
-    $helpersModule = Get-Module -Name $PsFilePath -ListAvailable
-    $result = @{}
+    $psFiles = Get-ChildItem -Path $PsFolderPath -Filter "_*.ps1" -Force
 
-    foreach ($commandName in $helpersModule.ExportedCommands.Keys) {
-        $commandObject = $helpersModule.ExportedCommands[$commandName]
-        $command = Get-Command $commandObject
-        $result[$commandName] = $command.ScriptBlock
+    $result = @{}
+    foreach ($psFile in $psFiles) {
+        Import-Module -Name $psFile.FullName -Force
+        $helpersModule = Get-Module -Name $psFile.FullName -ListAvailable
+
+        foreach ($commandName in $helpersModule.ExportedCommands.Keys) {
+            $commandObject = $helpersModule.ExportedCommands[$commandName]
+            $command = Get-Command $commandObject
+            $result[$commandName] = $command.ScriptBlock
+        }
     }
+
     $result
 }
 
 Install-Module -Name EPS -Scope CurrentUser
 
-$helperFilePath = "$PSScriptRoot/templates/_Helpers.ps1"
-$epsHelpers = if (Test-Path -Path $helperFilePath) `
-    { Import-HelpersFromPowerShell -PsFilePath $helperFilePath } else `
-    { @{} }
+$epsHelpers = Import-HelpersFromPowerShell -PsFolderPath "$PSScriptRoot/templates"
 
 $azureDevOpsHeaders = @{
     Authorization = $PatToken | Format-PatTokenBasicHeader

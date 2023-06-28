@@ -1,0 +1,19 @@
+{
+  "ItemTypes": [
+    "Initiative"
+  ],
+  "Prefix": "[sync]",
+  "Rules": [
+    {
+      "RuleName": "Simple rule",
+      "TemplateName": "StatesLimitedToGroup.eps",
+      "Props": {
+        "GroupId": "00000000-0000-0000-0000-000000000000",
+        "States": [ "Closed" ]
+      },
+      "ItemTypes": {
+        "Initiative": {}
+      }
+    }
+  ]
+}
