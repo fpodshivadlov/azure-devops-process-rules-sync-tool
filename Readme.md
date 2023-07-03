@@ -12,6 +12,8 @@ This tool enables you to store Azure DevOps Process Rules under source control.
 
 ## Getting Started
 
+- Install Required modules:
+  `Install-Module -Name EPS -Repository PSGallery -Force`
 - Review  `/configuration/Standard.json` file and define your own process based on it.
 - Add your own templates if the current set of templates does not meet your needs.
 - Add your own helpers to simplify template creation if necessary.

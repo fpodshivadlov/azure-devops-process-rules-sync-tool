@@ -1,3 +1,5 @@
+#Requires -Modules @{ ModuleName = "EPS"; ModuleVersion = "1.0.0" }
+
 Param(
     [Parameter(Mandatory=$true)]
     [string]
@@ -54,8 +56,6 @@ function Import-HelpersFromPowerShell {
 
     $result
 }
-
-Install-Module -Name EPS -Scope CurrentUser
 
 $epsHelpers = Import-HelpersFromPowerShell -PsFolderPath "$PSScriptRoot/templates"
 
