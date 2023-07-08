@@ -5,6 +5,17 @@
             "name": "PowerShell: Run Pester Tests",
             "type": "PowerShell",
             "request": "launch",
+            "script": "./Invoke-UnitTests.ps1",
+            "args": [
+                "-CodeCoverageOutputFormat CoverageGutters"
+            ],
+            "createTemporaryIntegratedConsole": false,
+            "attachDotnetDebugger": false
+        },
+        {
+            "name": "PowerShell: Debug Pester Tests",
+            "type": "PowerShell",
+            "request": "launch",
             "script": "Invoke-Pester",
             "createTemporaryIntegratedConsole": true,
             "attachDotnetDebugger": true
